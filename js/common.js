@@ -30,7 +30,7 @@ function showModal(src, qstr, doClose, className, button) {
     var detail = '';
     if (ds) {
       if (ds.alert) {
-        alert(ds.alert);
+        showSwal(ds.alert, 'warning');
       } else if (ds.detail) {
         detail = decodeURIComponent(ds.detail);
       } else if (ds.modal) {
@@ -47,6 +47,14 @@ function showModal(src, qstr, doClose, className, button) {
       detail.evalScript();
     }
   });
+}
+
+function showSwal(message, icon, title) {
+  if (typeof Swal !== 'undefined') {
+    return Swal.fire({title: title || '', icon: icon || 'info', text: message});
+  }
+  alert(message);
+  return Promise.resolve();
 }
 
 function defaultSubmit(ds) {
@@ -186,9 +194,6 @@ function defaultSubmit(ds) {
       }
     }
   }
-  if (_alert != '') {
-    alert(_alert);
-  }
   if (_input) {
     _input.focus();
     var tag = _input.tagName.toLowerCase();
@@ -202,29 +207,36 @@ function defaultSubmit(ds) {
       }
     }
   }
-  if (_eval) {
-    eval(_eval);
-  }
-  if (_location) {
-    if (_location == 'reload') {
-      if (loader) {
-        loader.reload();
-      } else {
-        window.location.reload();
-      }
-    } else if (_location == 'refresh') {
-      window.location.reload();
-    } else if (_location == 'back') {
-      if (loader) {
-        loader.back();
-      } else {
-        window.history.go(-1);
-      }
-    } else if (loader && _location != _url) {
-      loader.location(_location);
-    } else {
-      window.location = _location.replace(/&amp;/g, '&');
+  function doDefaultSubmitAction() {
+    if (_eval) {
+      eval(_eval);
     }
+    if (_location) {
+      if (_location == 'reload') {
+        if (loader) {
+          loader.reload();
+        } else {
+          window.location.reload();
+        }
+      } else if (_location == 'refresh') {
+        window.location.reload();
+      } else if (_location == 'back') {
+        if (loader) {
+          loader.back();
+        } else {
+          window.history.go(-1);
+        }
+      } else if (loader && _location != _url) {
+        loader.location(_location);
+      } else {
+        window.location = _location.replace(/&amp;/g, '&');
+      }
+    }
+  }
+  if (_alert != '') {
+    showSwal(_alert, _input ? 'warning' : (_location ? 'success' : 'info')).then(doDefaultSubmitAction);
+  } else {
+    doDefaultSubmitAction();
   }
 }
 
@@ -296,9 +308,9 @@ var dataTableActionCallback = function(xhr) {
           $G(val).remove();
         }
       } else if (prop == 'alert') {
-        alert(val);
+        showSwal(val);
       } else if (prop == 'error') {
-        alert(trans(val));
+        showSwal(trans(val), 'error');
       } else if (prop == 'elem') {
         el = $E(val);
         if (el) {
@@ -502,14 +514,14 @@ function initEditInplace(id, model, addbtn) {
       ds = req.responseText.toJSON();
       if (ds) {
         if (ds.alert) {
-          alert(ds.alert);
+          showSwal(ds.alert);
         }
         if (ds.editId) {
           $E(ds.editId).innerHTML = ds.edit;
         }
         return true;
       } else if (req.responseText != '') {
-        alert(req.responseText);
+        showSwal(req.responseText, 'error');
       }
       return false;
     }
@@ -561,10 +573,10 @@ function initEditInplace(id, model, addbtn) {
               }
             }
             if (ds.alert) {
-              alert(ds.alert);
+              showSwal(ds.alert);
             }
           } else if (xhr.responseText != '') {
-            alert(xhr.responseText);
+            showSwal(xhr.responseText, 'error');
           }
         },
         this
@@ -702,8 +714,10 @@ function initTelegramSettings() {
     let q = 'bot_token=' + $E('telegram_bot_token').value;
     q += '&chat_id=' + $E('telegram_chat_id').value;
     send('index.php/index/model/telegram/test', q, function(xhr) {
-      if (xhr.responseText !== '') {
-        alert(xhr.responseText);
+      if (xhr.responseText === '') {
+        showSwal(trans('test message sent'), 'success', 'Telegram');
+      } else {
+        showSwal(xhr.responseText, 'error', 'Telegram');
       }
     });
   });
@@ -713,7 +727,7 @@ function socialLoginSubmit(xhr) {
   var ds = xhr.responseText.toJSON();
   if (ds) {
     if (ds.alert) {
-      alert(ds.alert);
+      showSwal(ds.alert, 'error');
     }
     if (ds.isMember == 1) {
       if ($E("login_action")) {

@@ -27,6 +27,7 @@ var SHOWING_PAGE = 'showing page';
 var SORRY_XXX_NOT_FOUND = 'Sorry XXX not found';
 var SUCCESSFULLY_COPIED_TO_CLIPBOARD = 'Successfully copied to clipboard';
 var SUCCESSFULLY_UPLOADED_XXX_FILES = 'Successfully uploaded XXX files';
+var TEST_MESSAGE_SENT = 'Test message sent successfully.';
 var THE_TYPE_OF_FILE_IS_INVALID = 'The type of file is invalid';
 var UNCHECK = 'uncheck';
 var YOU_WANT_TO_XXX = 'You want to XXX ?';

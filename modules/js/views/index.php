@@ -45,6 +45,7 @@ class View extends \Kotchasan\KBase
         $js[] = file_get_contents(ROOT_PATH.'js/multiselect.js');
         $js[] = file_get_contents(ROOT_PATH.'js/select.js');
         $js[] = file_get_contents(ROOT_PATH.'js/table.js');
+        $js[] = file_get_contents(ROOT_PATH.'js/sweetalert2.all.min.js');
         $js[] = file_get_contents(ROOT_PATH.'js/common.js');
         $js[] = file_get_contents(ROOT_PATH.'js/pdpa.js');
         // โหลดโมดูลที่ติดตั้งแล้ว

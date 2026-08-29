@@ -27,6 +27,7 @@ var SHOWING_PAGE = 'กำลังแสดงหน้าที่';
 var SORRY_XXX_NOT_FOUND = 'ขออภัย ไม่พบ XXX ที่ต้องการ';
 var SUCCESSFULLY_COPIED_TO_CLIPBOARD = 'สำเนาไปยังคลิปบอร์ดเรียบร้อย';
 var SUCCESSFULLY_UPLOADED_XXX_FILES = 'อัปโหลดเรียบร้อย XXX ไฟล์';
+var TEST_MESSAGE_SENT = 'ส่งข้อความทดสอบสำเร็จแล้ว';
 var THE_TYPE_OF_FILE_IS_INVALID = 'ชนิดของไฟล์ไม่ถูกต้อง';
 var UNCHECK = 'ไม่เลือก';
 var YOU_WANT_TO_XXX = 'คุณต้องการ XXX ?';

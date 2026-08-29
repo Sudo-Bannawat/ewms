@@ -57,8 +57,8 @@ class View extends \Gcms\View
             'id' => 'telegram_chat_id',
             'labelClass' => 'g-input icon-support',
             'itemClass' => 'item',
-            'label' => '{LNG_Bot Username} ({LNG_Telegram Login Widget})',
-            'placeholder' => '@my_notify',
+            'label' => '{LNG_Telegram Chat ID}',
+            'placeholder' => '123456789 หรือ -1001234567890',
             'value' => isset(self::$cfg->telegram_chat_id) ? self::$cfg->telegram_chat_id : ''
         ]);
         $groups = $fieldset->add('groups', [

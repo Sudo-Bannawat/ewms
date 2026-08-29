@@ -27,6 +27,7 @@ var SHOWING_PAGE = 'ສະແດງໜ້າທີ່';
 var SORRY_XXX_NOT_FOUND = 'ຂໍອະໄພບໍ່ພົບ XXX ທີ່ຕ້ອງການ';
 var SUCCESSFULLY_COPIED_TO_CLIPBOARD = 'ສຳເນົາໄປຍັງຄິບບອດຮຽບຮ້ອຍ';
 var SUCCESSFULLY_UPLOADED_XXX_FILES = 'ອັບໂຫຼດຮຽບຮ້ອຍ XXX ແຟ້ມ';
+var TEST_MESSAGE_SENT = 'ສົ່ງຂໍ້ຄວາມທົດສອບສຳເລັດແລ້ວ';
 var THE_TYPE_OF_FILE_IS_INVALID = 'ຊະນິດຂອງແຟ້ມບໍ່ຖືກຕ້ອງ';
 var UNCHECK = 'ບໍ່ເລືອກ';
 var YOU_WANT_TO_XXX = 'ທ່ານບໍ່ຕ້ອງການ XXX ?';
