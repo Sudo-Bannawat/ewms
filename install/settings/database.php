@@ -6,15 +6,13 @@ return array(
         'dbdriver' => 'mysql',
         'username' => 'root',
         'password' => '',
-        'dbname' => 'edms',
+        'dbname' => 'ewms',
         'prefix' => 'app'
     ),
     'tables' => array(
         'category' => 'category',
-        'edms' => 'edms',
-        'edms_files' => 'edms_files',
-        'edms_download' => 'edms_download',
-        'edms_meta' => 'edms_meta',
+        'tasks' => 'tasks',
+        'task_notifications' => 'task_notifications',
         'language' => 'language',
         'logs' => 'logs',
         'user' => 'user',

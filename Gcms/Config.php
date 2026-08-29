@@ -204,33 +204,6 @@ class Config extends \Kotchasan\Config
     public $login_message_style = 'hidden';
     /**
      * Channel ID
-     * จาก Line Login
-     *
-     * @var string
-     */
-    public $line_channel_id = '';
-    /**
-     * Channel secret
-     * จาก Line Login
-     *
-     * @var string
-     */
-    public $line_channel_secret = '';
-    /**
-     * Bot basic ID
-     * จาก Messaging API
-     *
-     * @var string
-     */
-    public $line_official_account = '';
-    /**
-     * Channel access token (long-lived)
-     * จาก Messaging API
-     *
-     * @var string
-     */
-    public $line_channel_access_token = '';
-    /**
      * Bot Username
      * Bot Username จาก Telegram
      *
@@ -339,51 +312,22 @@ class Config extends \Kotchasan\Config
     public $know_file_typies = ['pdf', 'jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'webp', 'pdf'];
 
     /**
-     * เลขที่เอกสาร
+     * จำนวนวันก่อนครบกำหนดที่ต้องแจ้งเตือนงานค้าง (งานค้าง)
      *
-     * @var string
+     * @var int
      */
-    public $dms_format_no = 'DOC%Y%M-%04d';
+    public $task_reminder_days = 1;
     /**
-     * เลขที่เอกสาร (Prefix)
-     *
-     * @var string
-     */
-    public $dms_prefix = '';
-    /**
-     * สิทธิ์การใช้งานเริ่มต้นเมื่อมีการสมัครสมาชิก
+     * รายชื่อวันที่ต้องแจ้งเตือนก่อนครบกำหนด (วัน)
+     * ตัวอย่าง [1, 3, 7] = แจ้งเตือนเมื่อเหลือ 1, 3 และ 7 วัน
      *
      * @var array
      */
-    public $dms_user_permission = [];
+    public $task_reminder_dates = [1, 3, 7];
     /**
-     * การอัปโหลด
+     * คีย์ลับสำหรับเรียก cron_tasks.php
      *
-     * @var int
+     * @var string
      */
-    public $dms_upload_options = 0;
-    /**
-     * ไม่จำเป็นต้องแนบไฟล์
-     *
-     * @var bool
-     */
-    public $dms_require_attach_file = false;
-    /**
-     * ชนิดของไฟล์อัปโหลด
-     *
-     * @var array
-     */
-    public $dms_file_typies = ['doc', 'ppt', 'pptx', 'docx', 'rar', 'zip', 'jpg', 'pdf', 'webp'];
-    /**
-     * ขนาดของไฟล์อัปโหลด (2M)
-     *
-     * @var int
-     */
-    public $dms_upload_size = 2097152;
-    /**
-     * เมื่อคลิกดาวน์โหลด
-     *
-     * @var int
-     */
-    public $dms_download_action = 0;
+    public $cron_secret = 'CHANGE_THIS_SECRET_KEY';
 }

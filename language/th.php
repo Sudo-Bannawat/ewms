@@ -100,18 +100,6 @@ return array(
   'Details of' => 'รายละเอียดของ',
   'Didn&#039;t receive code?' => 'ไม่ได้รับโค้ด?',
   'Director' => 'ผู้อำนวยการ',
-  'DMS_CATEGORIES' => array(
-    'department' => 'แผนก',
-    'cabinet' => 'ตู้เก็บเอกสาร'
-  ),
-  'DMS_UPLOAD_OPTIONS' => array(
-    0 => 'สามารถอัปโหลดได้ทุกแผนก',
-    1 => 'สามารถอัปโหลดได้แผนกของตัวเองเท่านั้น'
-  ),
-  'DMS_WANT' => array(
-    'file' => 'แนบไฟล์',
-    'url' => 'ส่ง URL'
-  ),
   'Document' => 'เอกสาร',
   'Document management system' => 'ระบบจัดเก็บเอกสาร',
   'Document No.' => 'เลขที่เอกสาร',
@@ -136,7 +124,6 @@ return array(
   'English lowercase letters and numbers, not less than 6 digits' => 'ภาษาอังกฤษตัวพิมพ์เล็กและตัวเลข ไม่น้อยกว่า 6 หลัก',
   'Enter the 4-digit verification code that was sent to your phone number.' => 'ป้อนรหัสยืนยัน 4 หลักที่ส่งไปยังหมายเลขโทรศัพท์ของคุณ',
   'Enter the domain name you want to allow or enter * for all domains. or leave it blank if you want to use it on this domain only' => 'กรอกชื่อโดเมนที่ต้องการอนุญาต หรือกรอก * สำหรับทุกโดเมน หรือเว้นว่างไว้ถ้าต้องการให้ใช้งานได้บนโดเมนนี้เท่านั้น',
-  'Enter the LINE user ID you received when adding friends. Or type userId sent to the official account to request a new user ID. This information is used for receiving private messages from the system via LINE.' => 'กรอก user ID ของไลน์ที่ได้ตอนเพิ่มเพื่อน หรือพิมพ์คำว่า userId ส่งไปยังบัญชีทางการเพื่อขอ user ID ใหม่ ข้อมูลนี้ใช้สำหรับการรับข้อความส่วนตัวที่มาจากระบบผ่านไลน์',
   'Enter your password again' => 'กรอกรหัสผ่านของคุณอีกครั้ง',
   'Enter your registered username. A new password will be sent to this username.' => 'กรอกชื่อผู้ใช้ที่ลงทะเบียนไว้ ระบบจะส่งรหัสผ่านใหม่ไปยังชื่อผู้ใช้นี้',
   'entries' => 'รายการ',
@@ -150,7 +137,6 @@ return array(
   'File size is less than :size' => 'ขนาดของไฟล์ไม่เกิน :size',
   'Find your transaction history by' => 'ค้นหาประวัติการทำรายการได้จาก',
   'Footer' => 'ส่วนท้าย',
-  'for login by LINE account' => 'สำหรับการเข้าระบบโดยบัญชีไลน์',
   'Forgot' => 'ลืมรหัสผ่าน',
   'from' => 'จาก',
   'General' => 'ทั่วไป',
@@ -171,10 +157,6 @@ return array(
   'Key' => 'คีย์',
   'Language' => 'ภาษา',
   'Leave empty for generate auto' => 'เว้นว่างไว้เพื่อสร้างโดยอัตโนมัติ',
-  'LINE official account (with @ prefix, e.g. @xxxx)' => 'บัญชีทางการของไลน์ (มี @ นำหน้า เช่น @xxxx)',
-  'LINE settings' => 'ตั้งค่าไลน์',
-  'LINE_FOLLOW_MESSAGE' => 'สวัสดี คุณ :name นี่คือบัญชีทางการของ :title เราจะส่งข่าวสารถึงคุณผ่านช่องทางนี้',
-  'LINE_REPLY_MESSAGE' => 'ขออภัยไม่สามารถตอบกลับข้อความนี้ได้',
   'List of' => 'รายการ',
   'List of IPs that allow connection 1 line per 1 IP' => 'รายการไอพีแอดเดรสทั้งหมดที่อนุญาต 1 บรรทัดต่อ 1 ไอพี',
   'Local time' => 'เวลาท้องถิ่น',
@@ -325,7 +307,6 @@ return array(
   'Send Document' => 'ส่งเอกสาร',
   'Send login approval notification' => 'ส่งแจ้งเตือนอนุมัติการเข้าระบบ',
   'Send member confirmation message' => 'ส่งข้อความยืนยันสมาชิก',
-  'send message to user When a user adds LINE&#039;s official account as a friend' => 'ส่งข้อความไปยังผู้ใช้ เมื่อผู้ใช้เพิ่มบัญชีทางการของไลน์เป็นเพื่อน',
   'Send notification messages When making a transaction' => 'ส่งข้อความแจ้งเตือนเมื่อมีการทำรายการ',
   'Sender' => 'ผู้ส่ง',
   'Sender Name' => 'ชื่อผู้ส่ง',
@@ -354,8 +335,6 @@ return array(
   'Size of' => 'ขนาดของ',
   'Size of the file upload' => 'ขนาดของไฟล์อัปโหลด',
   'skip to content' => 'ข้ามไปยังเนื้อหา',
-  'SMS Settings' => 'ตั้งค่า SMS',
-  'SMS_SENDER_COMMENT' => 'บาง Package อาจไม่สามารถกำหนดชื่อผู้ส่งได้ กรุณาตรวจสอบกับผู้ให้บริการ',
   'SMTPSECURIES' => array(
     '' => 'การเชื่อมต่อแบบปกติ',
     'ssl' => 'การเชื่อมต่อที่ปลอดภัย (SSL)'
@@ -433,7 +412,6 @@ return array(
   'Width' => 'กว้าง',
   'With selected' => 'ทำกับที่เลือก',
   'YEAR_OFFSET' => 543,
-  'You can enter your LINE user ID below on your personal information page. to link your account to this official account' => 'คุณสามารถกรอก LINE user ID ด้านล่างในหน้าข้อมูลส่วนตัวของคุณ เพื่อผูกบัญชีของคุณเข้ากับบัญชีทางการนี้ได้',
   'You can login at' => 'คุณสามารถเข้าระบบได้ที่',
   'You can select multiple groups' => 'สามารถเลือกได้หลายแผนก',
   'You haven&#039;t verified your email address. Please check your email. and click the link in the email' => 'คุณยังไม่ได้ยืนยันที่อยู่อีเมล กรุณาตรวจสอบอีเมลของคุณ และคลิกลิงค์ในอีเมล',
@@ -444,5 +422,41 @@ return array(
   'Your new password is' => 'รหัสผ่านใหม่ของคุณคือ',
   'Your OTP code is :otp. Please enter this code on the website to confirm your phone number.' => 'รหัส OTP ของคุณคือ :otp กรุณาป้อนรหัสนี้บนเว็บไซต์เพื่อยืนยันหมายเลขโทรศัพท์ของคุณ',
   'Your registration information' => 'ข้อมูลการลงทะเบียนของคุณ',
-  'Zipcode' => 'รหัสไปรษณีย์'
+  'Zipcode' => 'รหัสไปรษณีย์',
+  'Add new' => 'เพิ่มใหม่',
+  'all' => 'ทั้งหมด',
+  'Assignee' => 'ผู้รับผิดชอบ',
+  'Can add' => 'เพิ่มงานได้',
+  'Can delete' => 'ลบงานได้',
+  'Can manage all' => 'จัดการงานทุกคนได้',
+  'Can view' => 'ดูงานได้',
+  'Can not be performed this request' => 'ไม่สามารถทำรายการนี้ได้',
+  'day' => 'วัน',
+  'Deadline' => 'กำหนดส่ง',
+  'Enter the date and time the task must be completed' => 'กรอกวันที่และเวลาที่ต้องทำงานให้เสร็จ',
+  'Example' => 'ตัวอย่าง',
+  'Mark as done' => 'ทำเครื่องหมายเสร็จสิ้น',
+  'Overdue task' => 'งานเกินกำหนด',
+  'Pending task' => 'งานค้างที่ยังไม่เสร็จ',
+  'Please enter a future date and time' => 'กรุณากรอกวันที่และเวลาในอนาคต',
+  'Priority' => 'ความสำคัญ',
+  'Remind again every number of days until the task is done' => 'แจ้งเตือนซ้ำทุกจำนวนวัน จนกว่างานจะเสร็จ',
+  'Remind before (days)' => 'แจ้งเตือนล่วงหน้า (วัน)',
+  'Reminder repeat' => 'แจ้งเตือนซ้ำ',
+  'Secret key for calling the cron endpoint' => 'รหัสลับสำหรับเรียกใช้ cron',
+  'Start notifying when the task is due within this number of days' => 'เริ่มแจ้งเตือนเมื่องานเหลืออีกกี่วันถึงกำหนด',
+  'Task' => 'งานค้าง',
+  'Task notification' => 'แจ้งเตือนงานค้าง',
+  'Task settings' => 'ตั้งค่างานค้าง',
+  'TASK_PRIORITIES' => array(
+    'low' => 'ต่ำ',
+    'medium' => 'ปานกลาง',
+    'high' => 'สูง'
+  ),
+  'TASK_STATUSES' => array(
+    'pending' => 'รอดำเนินการ',
+    'done' => 'เสร็จแล้ว',
+    'overdue' => 'เกินกำหนด'
+  ),
+  'Unassigned' => 'ยังไม่กำหนดผู้รับผิดชอบ'
 );

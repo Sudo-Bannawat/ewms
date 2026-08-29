@@ -49,12 +49,6 @@ class View extends \Gcms\View
         if (!isset($ret_uri) || preg_match('/loader\.php/', $ret_uri)) {
             $ret_uri = WEB_URL.'index.php';
         }
-        if (empty(self::$cfg->line_channel_id)) {
-            $line_button = '';
-        } else {
-            // Line Login
-            $line_button = '<a class="button line wide margin-top" href="'.\Index\Linelogin\Model::url($ret_uri).'"><span class=icon-line>Log in</span></a>';
-        }
         if (empty(Login::$login_message)) {
             Login::$login_message = strip_tags($request->get('msg', '')->topic());
             if (Login::$login_message != '') {
@@ -72,7 +66,6 @@ class View extends \Gcms\View
             '/{LOGO}/' => self::logo(),
             '/{LOGO_CLASS}/' => \Index\Index\Controller::logoClass(),
             '/<FACEBOOK>(.*)<\/FACEBOOK>/s' => empty(self::$cfg->facebook_appId) ? '' : '\\1',
-            '/{LINELOGIN}/' => $line_button,
             '/{TELEGRAMLOGIN}/' => $telegram,
             '/{PLACEHOLDER}/' => self::usernameLabel(),
             '/{TOKEN}/' => $request->createToken(),

@@ -58,10 +58,6 @@ class Model
                 'text' => '{LNG_Email settings}',
                 'url' => 'index.php?module=mailserver'
             ];
-            $settings['linesettings'] = [
-                'text' => '{LNG_LINE settings}',
-                'url' => 'index.php?module=linesettings'
-            ];
             $settings['telegramsettings'] = [
                 'text' => '{LNG_Telegram settings}',
                 'url' => 'index.php?module=telegramsettings'
@@ -69,10 +65,6 @@ class Model
             $settings['apis'] = [
                 'text' => 'API',
                 'url' => 'index.php?module=apis'
-            ];
-            $settings['sms'] = [
-                'text' => '{LNG_SMS Settings}',
-                'url' => 'index.php?module=sms'
             ];
             $settings['modules'] = [
                 'text' => '{LNG_Module}',

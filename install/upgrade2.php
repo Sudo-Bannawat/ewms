@@ -74,11 +74,8 @@ if (defined('ROOT_PATH')) {
                 if (!$db->indexExists($table_user, 'token')) {
                     $db->query("ALTER TABLE `$table_user` ADD INDEX (`token`)");
                 }
-                if (!$db->fieldExists($table_user, 'line_uid')) {
-                    $db->query("ALTER TABLE `$table_user` ADD `line_uid` VARCHAR(33) DEFAULT NULL");
-                }
-                if (!$db->indexExists($table_user, 'line_uid')) {
-                    $db->query("ALTER TABLE `$table_user` ADD INDEX (`line_uid`)");
+                if (!$db->fieldExists($table_user, 'telegram_chat_id')) {
+                    $db->query("ALTER TABLE `$table_user` ADD `telegram_chat_id` BIGINT(20) DEFAULT NULL COMMENT 'Telegram Chat ID for notifications' AFTER `telegram_id`");
                 }
                 if (!$db->fieldExists($table_user, 'activatecode')) {
                     $db->query("ALTER TABLE `$table_user` ADD `activatecode` VARCHAR(32) NOT NULL DEFAULT '', ADD INDEX (`activatecode`)");
@@ -110,35 +107,49 @@ if (defined('ROOT_PATH')) {
                     $db->query($sql);
                     $content[] = '<li class="correct">สร้างตาราง `'.$table_logs.'` สำเร็จ</li>';
                 }
-                // dms_meta
-                $table_dms_meta = $db_config['prefix'].'_dms_meta';
-                $table_dms = $db_config['prefix'].'_dms';
-                if (!$db->tableExists($table)) {
-                    $db->query("CREATE TABLE `$table_dms_meta` (`dms_id` int(11) NOT NULL,`type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,`value` text COLLATE utf8_unicode_ci NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
-                    $db->query("ALTER TABLE `$table_dms_meta` ADD KEY `dms_id` (`dms_id`)");
-                    $db->query("INSERT INTO `$table_dms_meta` SELECT `id`,'department',`department` FROM `$table_dms`");
-                    $db->query("INSERT INTO `$table_dms_meta` SELECT `id`,'cabinet',`cabinet` FROM `$table_dms`");
-                    $db->query("ALTER TABLE `$table_dms` DROP `department`");
-                    $db->query("ALTER TABLE `$table_dms` DROP `cabinet`");
-                    $db->query("ALTER TABLE `$table_dms` ADD `url` VARCHAR(255) NOT NULL");
+                // ตาราง tasks (งานค้าง)
+                $table_tasks = $db_config['prefix'].'_tasks';
+                if (!$db->tableExists($table_tasks)) {
+                    $sql = 'CREATE TABLE `'.$table_tasks.'` (';
+                    $sql .= ' `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,';
+                    $sql .= ' `user_id` int(11) NOT NULL,';
+                    $sql .= ' `title` varchar(255) NOT NULL,';
+                    $sql .= ' `description` text,';
+                    $sql .= ' `deadline` datetime NOT NULL,';
+                    $sql .= ' `status` enum("pending","done","overdue") NOT NULL DEFAULT "pending",';
+                    $sql .= ' `priority` enum("low","medium","high") NOT NULL DEFAULT "medium",';
+                    $sql .= ' `created_at` datetime DEFAULT CURRENT_TIMESTAMP,';
+                    $sql .= ' `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,';
+                    $sql .= ' KEY `user_id` (`user_id`),';
+                    $sql .= ' KEY `deadline` (`deadline`),';
+                    $sql .= ' KEY `status` (`status`),';
+                    $sql .= ' INDEX `idx_deadline_status` (`deadline`, `status`),';
+                    $sql .= ' CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `'.$table_user.'` (`id`) ON DELETE CASCADE';
+                    $sql .= ') ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;';
+                    $db->query($sql);
+                    $content[] = '<li class="correct">สร้างตาราง `'.$table_tasks.'` สำเร็จ</li>';
                 }
-                if (!$db->indexExists($table_dms_meta, 'type')) {
-                    $db->query("ALTER TABLE `$table_dms_meta` ADD INDEX (`type`)");
+                // ตาราง task_notifications (ประวัติการแจ้งเตือนงานค้าง)
+                $table_tasks_notifications = $db_config['prefix'].'_task_notifications';
+                if (!$db->tableExists($table_tasks_notifications)) {
+                    $sql = 'CREATE TABLE `'.$table_tasks_notifications.'` (';
+                    $sql .= ' `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,';
+                    $sql .= ' `task_id` int(11) NOT NULL,';
+                    $sql .= ' `user_id` int(11) NOT NULL,';
+                    $sql .= ' `notification_type` enum("telegram","email","sms") NOT NULL DEFAULT "telegram",';
+                    $sql .= ' `sent_at` datetime DEFAULT NULL,';
+                    $sql .= ' `status` enum("sent","failed","pending") NOT NULL DEFAULT "pending",';
+                    $sql .= ' `response` text,';
+                    $sql .= ' KEY `task_id` (`task_id`),';
+                    $sql .= ' KEY `user_id` (`user_id`),';
+                    $sql .= ' KEY `sent_at` (`sent_at`),';
+                    $sql .= ' INDEX `idx_task_status` (`task_id`, `status`),';
+                    $sql .= ' CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `'.$table_tasks.'` (`id`) ON DELETE CASCADE,';
+                    $sql .= ' CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `'.$table_user.'` (`id`) ON DELETE CASCADE';
+                    $sql .= ') ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;';
+                    $db->query($sql);
+                    $content[] = '<li class="correct">สร้างตาราง `'.$table_tasks_notifications.'` สำเร็จ</li>';
                 }
-                $content[] = '<li class="correct">ปรับปรุงตาราง `'.$table_dms_meta.'` สำเร็จ</li>';
-                $table = $db_config['prefix'].'_dms_download';
-                if (!$db->indexExists($table, 'dms_id')) {
-                    $db->query("ALTER TABLE `$table` ADD INDEX (`dms_id`)");
-                }
-                if (!$db->indexExists($table, 'member_id')) {
-                    $db->query("ALTER TABLE `$table` ADD INDEX (`member_id`)");
-                }
-                $content[] = '<li class="correct">ปรับปรุงตาราง `'.$table.'` สำเร็จ</li>';
-                $table = $db_config['prefix'].'_dms_files';
-                if (!$db->indexExists($table, 'dms_id')) {
-                    $db->query("ALTER TABLE `$table` ADD INDEX (`dms_id`)");
-                }
-                $content[] = '<li class="correct">ปรับปรุงตาราง `'.$table.'` สำเร็จ</li>';
                 // ตาราง category
                 $table_category = $db_config['prefix'].'_category';
                 if (!$db->tableExists($table_category)) {
@@ -174,7 +185,6 @@ if (defined('ROOT_PATH')) {
                         $db->query("UPDATE `$table_user_meta` SET value = CONCAT('D', `id`)");
                         $db->query("ALTER TABLE `$table_user_meta` DROP `id`");
                         $db->query("ALTER TABLE `$table_user_meta` ADD INDEX (`member_id`, `name`)");
-                        $db->query("UPDATE `$table_dms_meta` SET `value`=CONCAT('D', `value`) WHERE `type`='department'");
                     } else {
                         $sql = 'CREATE TABLE `'.$table_user_meta.'` (';
                         $sql .= ' `value` varchar(10) NOT NULL,';

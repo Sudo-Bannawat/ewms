@@ -35,24 +35,6 @@ return array(
     5 => 'Fr',
     6 => 'Sa'
   ),
-  'DMS_CATEGORIES' => array(
-    'department' => 'Department',
-    'cabinet' => 'Filing cabinet'
-  ),
-  'DMS_UPLOAD_OPTIONS' => array(
-    0 => 'Can be uploaded by any department',
-    1 => 'Can only upload their own department'
-  ),
-  'DMS_WANT' => array(
-    'file' => 'Attach file',
-    'url' => 'Send URL'
-  ),
-  'DOWNLOAD_ACTIONS' => array(
-    0 => 'Download',
-    1 => 'Open file (know file type)'
-  ),
-  'LINE_FOLLOW_MESSAGE' => 'Hello, :name This is :title official account. We will send you news via this channel.',
-  'LINE_REPLY_MESSAGE' => 'Sorry, can&#039;t reply to this message.',
   'LOGIN_FIELDS' => array(
     'username' => 'Username',
     'email' => 'Email',
@@ -101,20 +83,11 @@ return array(
     0 => 'Unpublished',
     1 => 'Published'
   ),
-  'RECEIVE_TYPIES' => array(
-    1 => 'หนังสือภายนอก',
-    2 => 'หนังสือภายใน',
-    3 => 'หนังสือประทับตรา',
-    4 => 'หนังสือสั่งการ',
-    5 => 'หนังสือประชาสัมพันธ์',
-    6 => 'หนังสือที่เจ้าหน้าที่ทำขึ้นหรือรับไว้เป็นหลักฐานในราชการ'
-  ),
   'SEXES' => array(
     'u' => 'Not specified',
     'f' => 'Female',
     'm' => 'Male'
   ),
-  'SMS_SENDER_COMMENT' => 'Some packages may not be able to assign the sender name. Please check with the service provider.',
   'SMTPSECURIES' => array(
     '' => 'Clear Text',
     'ssl' => 'Server using a secure connection (SSL)'
@@ -125,5 +98,41 @@ return array(
     'fullwidth' => 'Extra wide'
   ),
   'TIME_FORMAT' => 'H:i',
-  'YEAR_OFFSET' => 0
+  'YEAR_OFFSET' => 0,
+  'Add new' => 'Add new',
+  'all' => 'All',
+  'Assignee' => 'Assignee',
+  'Can add' => 'Can add',
+  'Can delete' => 'Can delete',
+  'Can manage all' => 'Can manage all',
+  'Can view' => 'Can view',
+  'Can not be performed this request' => 'Can not be performed this request',
+  'day' => 'day',
+  'Deadline' => 'Deadline',
+  'Enter the date and time the task must be completed' => 'Enter the date and time the task must be completed',
+  'Example' => 'Example',
+  'Mark as done' => 'Mark as done',
+  'Overdue task' => 'Overdue task',
+  'Pending task' => 'Pending task',
+  'Please enter a future date and time' => 'Please enter a future date and time',
+  'Priority' => 'Priority',
+  'Remind again every number of days until the task is done' => 'Repeat reminders every number of days until the task is done',
+  'Remind before (days)' => 'Remind before (days)',
+  'Reminder repeat' => 'Reminder repeat',
+  'Secret key for calling the cron endpoint' => 'Secret key for calling the cron endpoint',
+  'Start notifying when the task is due within this number of days' => 'Start notifying when the task is due within this number of days',
+  'Task' => 'Task',
+  'Task notification' => 'Task notification',
+  'Task settings' => 'Task settings',
+  'TASK_PRIORITIES' => array(
+    'low' => 'Low',
+    'medium' => 'Medium',
+    'high' => 'High'
+  ),
+  'TASK_STATUSES' => array(
+    'pending' => 'Pending',
+    'done' => 'Done',
+    'overdue' => 'Overdue'
+  ),
+  'Unassigned' => 'Unassigned'
 );

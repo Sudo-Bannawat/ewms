@@ -31,70 +31,7 @@ CREATE TABLE `{prefix}_category` (
 INSERT INTO `{prefix}_category` (`type`, `category_id`, `topic`) VALUES
 ('department', 1, 'บริหาร'),
 ('department', 2, 'จัดซื้อจัดจ้าง'),
-('department', 3, 'บุคคล'),
-('cabinet', 1, 'คำสั่ง'),
-('cabinet', 2, 'คู่มือ'),
-('cabinet', 3, 'ทรัพย์สิน');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `{prefix}_dms`
---
-
-CREATE TABLE `{prefix}_dms` (
-  `id` int(11) NOT NULL,
-  `member_id` int(11) NOT NULL,
-  `create_date` date NOT NULL,
-  `document_no` varchar(20) NOT NULL,
-  `detail` text NOT NULL,
-  `topic` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `{prefix}_dms_download`
---
-
-CREATE TABLE `{prefix}_dms_download` (
-  `id` int(11) NOT NULL,
-  `file_id` int(11) NOT NULL,
-  `dms_id` int(11) NOT NULL,
-  `member_id` int(11) NOT NULL,
-  `downloads` int(11) NOT NULL,
-  `last_update` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `{prefix}_dms_files`
---
-
-CREATE TABLE `{prefix}_dms_files` (
-  `id` int(11) NOT NULL,
-  `dms_id` int(11) NOT NULL,
-  `topic` varchar(150) NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `ext` varchar(4) NOT NULL,
-  `size` int(11) NOT NULL,
-  `file` varchar(50) DEFAULT NULL,
-  `create_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `{prefix}_dms_meta`
---
-
-CREATE TABLE `{prefix}_dms_meta` (
-  `dms_id` int(11) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `value` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+('department', 3, 'บุคคล');
 
 -- --------------------------------------------------------
 
@@ -146,6 +83,40 @@ CREATE TABLE `{prefix}_number` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `{prefix}_tasks`
+--
+
+CREATE TABLE `{prefix}_tasks` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  `deadline` datetime NOT NULL,
+  `status` enum('pending','done','overdue') NOT NULL DEFAULT 'pending',
+  `priority` enum('low','medium','high') NOT NULL DEFAULT 'medium',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `{prefix}_task_notifications`
+--
+
+CREATE TABLE `{prefix}_task_notifications` (
+  `id` int(11) NOT NULL,
+  `task_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `notification_type` enum('telegram','email','sms') NOT NULL DEFAULT 'telegram',
+  `sent_at` datetime DEFAULT NULL,
+  `status` enum('sent','failed','pending') NOT NULL DEFAULT 'pending',
+  `response` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `{prefix}_user`
 --
 
@@ -169,8 +140,8 @@ CREATE TABLE `{prefix}_user` (
   `create_date` datetime DEFAULT NULL,
   `active` tinyint(1) DEFAULT 1,
   `social` tinyint(1) DEFAULT 0,
-  `line_uid` varchar(33) DEFAULT NULL,
   `telegram_id` varchar(13) DEFAULT NULL,
+  `telegram_chat_id` bigint(20) DEFAULT NULL COMMENT 'Telegram Chat ID for notifications',
   `activatecode` varchar(32) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -197,34 +168,6 @@ ALTER TABLE `{prefix}_category`
   ADD KEY `language` (`language`);
 
 --
--- Indexes for table `{prefix}_dms`
---
-ALTER TABLE `{prefix}_dms`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `{prefix}_dms_download`
---
-ALTER TABLE `{prefix}_dms_download`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `dms_id` (`dms_id`),
-  ADD KEY `member_id` (`member_id`);
-
---
--- Indexes for table `{prefix}_dms_files`
---
-ALTER TABLE `{prefix}_dms_files`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `dms_id` (`dms_id`);
-
---
--- Indexes for table `{prefix}_dms_meta`
---
-ALTER TABLE `{prefix}_dms_meta`
-  ADD KEY `dms_id` (`dms_id`),
-  ADD KEY `type` (`type`);
-
---
 -- Indexes for table `{prefix}_language`
 --
 ALTER TABLE `{prefix}_language`
@@ -246,11 +189,30 @@ ALTER TABLE `{prefix}_number`
   ADD PRIMARY KEY (`type`,`prefix`);
 
 --
+-- Indexes for table `{prefix}_tasks`
+--
+ALTER TABLE `{prefix}_tasks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `deadline` (`deadline`),
+  ADD KEY `status` (`status`),
+  ADD KEY `idx_deadline_status` (`deadline`,`status`);
+
+--
+-- Indexes for table `{prefix}_task_notifications`
+--
+ALTER TABLE `{prefix}_task_notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `task_id` (`task_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `sent_at` (`sent_at`),
+  ADD KEY `idx_task_status` (`task_id`,`status`);
+
+--
 -- Indexes for table `{prefix}_user`
 --
 ALTER TABLE `{prefix}_user`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `line_uid` (`line_uid`),
   ADD KEY `username` (`username`),
   ADD KEY `token` (`token`),
   ADD KEY `phone` (`phone`),
@@ -264,22 +226,17 @@ ALTER TABLE `{prefix}_user_meta`
   ADD KEY `member_id` (`member_id`,`name`);
 
 --
--- AUTO_INCREMENT for table `{prefix}_dms`
+-- Constraints for table `{prefix}_tasks`
 --
-ALTER TABLE `{prefix}_dms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `{prefix}_tasks`
+  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `{prefix}_user` (`id`) ON DELETE CASCADE;
 
 --
--- AUTO_INCREMENT for table `{prefix}_dms_download`
+-- Constraints for table `{prefix}_task_notifications`
 --
-ALTER TABLE `{prefix}_dms_download`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `{prefix}_dms_files`
---
-ALTER TABLE `{prefix}_dms_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `{prefix}_task_notifications`
+  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `{prefix}_tasks` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `{prefix}_user` (`id`) ON DELETE CASCADE;
 
 --
 -- AUTO_INCREMENT for table `{prefix}_language`
@@ -291,6 +248,18 @@ ALTER TABLE `{prefix}_language`
 -- AUTO_INCREMENT for table `{prefix}_logs`
 --
 ALTER TABLE `{prefix}_logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `{prefix}_tasks`
+--
+ALTER TABLE `{prefix}_tasks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `{prefix}_task_notifications`
+--
+ALTER TABLE `{prefix}_task_notifications`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

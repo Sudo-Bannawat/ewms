@@ -2,34 +2,26 @@
 /* config.php */
 return [
     'version' => '6.9.0',
-    'web_title' => 'eDms',
-    'web_description' => 'ระบบการจัดการเอกสารอิเล็กทรอนิกส์',
+    'web_title' => 'ระบบงานค้าง',
+    'web_description' => 'ระบบบริหารงานค้าง พร้อมแจ้งเตือนผ่าน Telegram',
     'timezone' => 'Asia/Bangkok',
     'member_status' => array(
         0 => 'สมาชิก',
-        1 => 'ผู้ดูแลระบบ',
-        2 => 'เจ้าหน้าที่'
+        1 => 'ผู้ดูแลระบบ'
     ),
     'color_status' => array(
         0 => '#259B24',
-        1 => '#FF0000',
-        2 => '#0E0EDA'
+        1 => '#FF0000'
     ),
-    'default_icon' => 'icon-edocument',
-    'dms_format_no' => '%04d',
-    'dms_prefix' => 'DOC%Y%M-',
-    'dms_file_typies' => array(
-        0 => 'doc',
-        1 => 'ppt',
-        2 => 'pptx',
-        3 => 'docx',
-        4 => 'rar',
-        5 => 'zip',
-        6 => 'jpg',
-        7 => 'pdf'
+    'default_icon' => 'icon-office',
+    'telegram_bot_username' => '',
+    'telegram_bot_token' => '',
+    'telegram_chat_id' => '',
+    'task_reminder_days' => 1,
+    'task_reminder_dates' => array(
+        0 => 1,
+        1 => 3,
+        2 => 7
     ),
-    'dms_upload_size' => 2097152,
-    'dms_download_action' => 0,
-    'dms_user_permission' => array('can_download_dms'),
-    'dms_upload_options' => 0
+    'cron_secret' => 'CHANGE_THIS_SECRET_KEY'
 ];

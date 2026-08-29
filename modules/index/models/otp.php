@@ -77,14 +77,10 @@ class Model extends \Kotchasan\Model
                         $db->update($table, $user->id, [
                             'activatecode' => $otp.':'.$expired
                         ]);
-                        // send SMS
-                        $msg = Language::replace('Your OTP code is :otp. Please enter this code on the website to confirm your phone number.', [':otp' => $otp]);
-                        // send SMS
-                        \Gcms\Sms::send($user->username, $msg);
                         // log
-                        \Index\Log\Model::add(0, 'index', 'SMS', '{LNG_Resend} IP '.$request->getClientIp(), $user->id);
+                        \Index\Log\Model::add(0, 'index', 'Email', '{LNG_Resend} IP '.$request->getClientIp(), $user->id);
                         // ขอ OTP ใหม่
-                        $ret['alert'] = Language::get('The system has sent a new OTP code to the phone number you have registered. Please check the SMS and enter the code to confirm the phone number.');
+                        $ret['alert'] = Language::get('The system has sent a new OTP code to the email you have registered. Please check the email and enter the code to confirm the phone number.');
                     } elseif ($match[1] === 'verified' && preg_match('/^([0-9]{4,4}):([0-9]+)$/', $user->activatecode, $codes)) {
                         // ตรวจสอบ OTP
                         $otp = $codes[1];
@@ -103,8 +99,6 @@ class Model extends \Kotchasan\Model
                             // OTP ไม่ถูกต้องหรือหมดอายุ
                             $ret['alert'] = Language::get('OTP is invalid or expired. Please request a new OTP.');
                         }
-                        // log
-                        \Index\Log\Model::add(0, 'index', 'SMS', '{LNG_Verify Account} IP '.$request->getClientIp(), $user->id);
                     } else {
                         // ไปหน้าแรก
                         $ret['location'] = $payload['ret_url'];

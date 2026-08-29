@@ -220,19 +220,6 @@ class View extends \Gcms\View
             'value' => $user['zipcode']
         ]);
         $groups = $fieldset->add('groups');
-        if (!empty(self::$cfg->line_official_account) && !empty(self::$cfg->line_channel_access_token) && $user['social'] != 3) {
-            // line_uid
-            $groups->add('text', [
-                'id' => 'register_line_uid',
-                'itemClass' => 'width50',
-                'labelClass' => 'g-input icon-line',
-                'label' => '{LNG_LINE user ID}',
-                'placeholder' => 'U1234abc...',
-                'comment' => '{LNG_Enter the LINE user ID you received when adding friends. Or type userId sent to the official account to request a new user ID. This information is used for receiving private messages from the system via LINE.}',
-                'maxlength' => 33,
-                'value' => $user['line_uid']
-            ]);
-        }
         if (!empty(self::$cfg->telegram_bot_token) && !empty(self::$cfg->telegram_bot_username)) {
             // telegram_id
             $groups->add('text', [
@@ -247,6 +234,18 @@ class View extends \Gcms\View
             $groups->add('div', [
                 'class' => 'width20',
                 'innerHTML' => '<div>&nbsp;</div><div id=telegram_login class=right data-username="'.self::$cfg->telegram_bot_username.'"></div>'
+            ]);
+        }
+        if (!empty(self::$cfg->telegram_bot_token)) {
+            // telegram_chat_id (สำหรับรับการแจ้งเตือนงานค้าง)
+            $groups->add('text', [
+                'id' => 'register_telegram_chat_id',
+                'itemClass' => 'width50',
+                'labelClass' => 'g-input icon-telegram',
+                'label' => '{LNG_Telegram Chat ID}',
+                'placeholder' => '{LNG_Telegram Chat ID for receiving task notifications}',
+                'maxlength' => 20,
+                'value' => $user['telegram_chat_id']
             ]);
         }
         // รูปภาพสมาชิก

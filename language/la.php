@@ -101,18 +101,6 @@ return array(
   'Details of' => 'ລາຍລະອຽດຂອງ',
   'Didn&#039;t receive code?' => 'ບໍ່ໄດ້ຮັບລະຫັດບໍ?',
   'Director' => 'ຜູ້ອຳນວຍການ',
-  'DMS_CATEGORIES' => array(
-    'department' => 'ພະແນກ',
-    'cabinet' => 'ຕູ້ໃສ່ເອກະສານ'
-  ),
-  'DMS_UPLOAD_OPTIONS' => array(
-    0 => 'ສາມາດອັບໂຫລດໄດ້ໂດຍພະແນກໃດກໍ່ຕາມ',
-    1 => 'ສາມາດອັບໂຫລດພະແນກຂອງຕົນເອງເທົ່ານັ້ນ'
-  ),
-  'DMS_WANT' => array(
-    'file' => 'ແນບໄຟລ໌',
-    'url' => 'ສົ່ງ URL'
-  ),
   'Document' => 'ເອກະສານ',
   'Document management system' => 'ລະບົບການເກັບຮັກສາເອກະສານ',
   'Document No.' => 'ເລກທີເອກະສານ',
@@ -120,10 +108,6 @@ return array(
   'Document title' => 'ຫົວຂໍ້ເອກະສານ',
   'Download' => 'ດາວໂຫຼດ',
   'Download history' => 'ປະຫວັດການດາວໂຫຼດ',
-  'DOWNLOAD_ACTIONS' => array(
-    0 => 'ດາວໂຫຼດແຟ້ມ',
-    1 => 'ເປີດແຟ້ມ(ທີ່ຮູ້ຈັກ)'
-  ),
   'Drag and drop to reorder' => 'ລາກແລ້ວວາງລົງເພື່ອຈັດຮຽງໃໝ່',
   'E-Receive' => 'ທະບຽນຮັບເອກະສານ',
   'Edit' => 'ແກ້ໄຂ',
@@ -137,7 +121,6 @@ return array(
   'English lowercase letters and numbers, not less than 6 digits' => 'ໂຕພິມນ້ອຍພາສາອັງກິດ ແລະຕົວເລກ, ບໍ່ຕໍ່າກວ່າ 6 ຕົວເລກ',
   'Enter the 4-digit verification code that was sent to your phone number.' => 'ໃສ່ລະຫັດຢືນຢັນ 4 ຕົວເລກທີ່ສົ່ງໄປຫາເບີໂທລະສັບຂອງທ່ານ.',
   'Enter the domain name you want to allow or enter * for all domains. or leave it blank if you want to use it on this domain only' => 'ໃສ່ຊື່ໂດເມນທີ່ທ່ານຕ້ອງການທີ່ຈະອະນຸຍາດໃຫ້ຫຼືໃສ່ * ສໍາລັບໂດເມນທັງຫມົດ. ຫຼືປ່ອຍໃຫ້ມັນຫວ່າງຖ້າທ່ານຕ້ອງການໃຊ້ມັນຢູ່ໃນໂດເມນນີ້ເທົ່ານັ້ນ',
-  'Enter the LINE user ID you received when adding friends. Or type userId sent to the official account to request a new user ID. This information is used for receiving private messages from the system via LINE.' => 'ໃສ່ user ID ຂອງ LINE ທີ່ທ່ານໄດ້ຮັບໃນເວລາເພີ່ມເພື່ອນ. ຫຼືພິມ userId ທີ່ຖືກສົ່ງໄປຫາບັນຊີທາງການເພື່ອຮ້ອງຂໍ user ID ໃຫມ່. ຂໍ້ມູນນີ້ແມ່ນໃຊ້ສໍາລັບການຮັບຂໍ້ຄວາມສ່ວນຕົວຈາກລະບົບຜ່ານ LINE.',
   'Enter your password again' => 'ໃສ່ລະຫັດຜ່ານຂອງທ່ານອີກຄັ້ງ',
   'Enter your registered username. A new password will be sent to this username.' => 'ໃສ່ຊື່ຜູ້ໃຊ້ທີ່ລົງທະບຽນຂອງທ່ານ. ລະຫັດຜ່ານໃໝ່ຈະຖືກສົ່ງໄປຫາຊື່ຜູ້ໃຊ້ນີ້',
   'entries' => 'ລາຍການ',
@@ -151,7 +134,6 @@ return array(
   'File size is less than :size' => 'ຂະໜາດຂອງແຟ້ມບໍ່ເກີນ:size',
   'Find your transaction history by' => 'ຄົ້ນຫາປະວັດການເຮັດລາຍະການໄດ້ຈາກ',
   'Footer' => 'ສ່ວນທ້າຍ',
-  'for login by LINE account' => 'ສໍາລັບການເຂົ້າສູ່ລະບົບດ້ວຍບັນຊີ LINE',
   'Forgot' => 'ລືມລະຫັດຜ່ານ',
   'from' => 'ຈາກ',
   'General' => 'ທົ່ວໄປ',
@@ -172,10 +154,6 @@ return array(
   'Key' => 'ແປ້ນພີມ',
   'Language' => 'ພາສາ',
   'Leave empty for generate auto' => 'ປ່ອຍຫວ່າງໄວ້ເພື່ອສ້າງອັດໂນມັດ',
-  'LINE official account (with @ prefix, e.g. @xxxx)' => 'ບັນຊີທາງການຂອງ LINE (ມີ @ ຄໍານໍາຫນ້າ, ເຊັ່ນ: @xxxx)',
-  'LINE settings' => 'ຕັ້ງ​ຄ່າ LINE',
-  'LINE_FOLLOW_MESSAGE' => 'ສະບາຍດີ, :name ນີ້ແມ່ນບັນຊີທາງການຂອງ :title ພວກເຮົາຈະສົ່ງຂ່າວໃຫ້ທ່ານຜ່ານຊ່ອງທາງນີ້.',
-  'LINE_REPLY_MESSAGE' => 'ຂໍອະໄພ, ບໍ່ສາມາດຕອບກັບຂໍ້ຄວາມນີ້ໄດ້.',
   'List of' => 'ລາຍການ',
   'List of IPs that allow connection 1 line per 1 IP' => 'ລາຍຊື່ IP ທີ່ອະນຸຍາດໃຫ້ເຊື່ອມຕໍ່ 1 ເສັ້ນຕໍ່ 1 IP',
   'Local time' => 'ເວລາທ້ອງຖິ່ນ',
@@ -287,14 +265,6 @@ return array(
   'Receipt No.' => 'ເລກທີ່ໃບຮັບ',
   'Receive' => 'ເຊັນເພື່ອຮັບເອກະສານ',
   'Receive Document' => 'ຮັບເອກະສານເຂົ້າໃນລະບົບ',
-  'RECEIVE_TYPIES' => array(
-    1 => 'หนังสือภายนอก',
-    2 => 'หนังสือภายใน',
-    3 => 'หนังสือประทับตรา',
-    4 => 'หนังสือสั่งการ',
-    5 => 'หนังสือประชาสัมพันธ์',
-    6 => 'หนังสือที่เจ้าหน้าที่ทำขึ้นหรือรับไว้เป็นหลักฐานในราชการ'
-  ),
   'Received' => 'ຮັບແລ້ວ',
   'Received date' => 'ວັນທີ່ແຈ້ງຊ່ອມ',
   'Received document' => 'ເອກະສານຂາເຂົ້າ',
@@ -326,7 +296,6 @@ return array(
   'Send Document' => 'ສົ່ງເອກະສານ',
   'Send login approval notification' => 'ສົ່ງການແຈ້ງເຕືອນການອະນຸມັດການເຂົ້າສູ່ລະບົບ',
   'Send member confirmation message' => 'ສົ່ງຂໍ້ຄວາມຢືນຢັນສະມາຊິກ',
-  'send message to user When a user adds LINE&#039;s official account as a friend' => 'ສົ່ງຂໍ້ຄວາມຫາຜູ້ໃຊ້ ເມື່ອຜູ້ໃຊ້ເພີ່ມບັນຊີທາງການຂອງ LINE ເປັນໝູ່',
   'Send notification messages When making a transaction' => 'ສົ່ງຂໍ້ຄວາມແຈ້ງເຕືອນເມື່ອມີການເຮັດທຸລະກຳ',
   'Sender' => 'ຜູ້ສົ່ງ',
   'Sender Name' => 'ຊື່ຜູ້ສົ່ງ',
@@ -355,8 +324,6 @@ return array(
   'Size of' => 'ຂະໜາດຂອງ',
   'Size of the file upload' => 'ຂະໜາດຂອງແຟ້ມອັບໂຫຼດ',
   'skip to content' => 'ຂ້າມໄປຍັງເນື້ອຫາ',
-  'SMS Settings' => 'ຕັ້ງຄ່າ SMS',
-  'SMS_SENDER_COMMENT' => 'ບາງແພັກເກັດອາດບໍ່ສາມາດມອບຊື່ຜູ້ສົ່ງໄດ້. ກະລຸນາກວດສອບກັບຜູ້ໃຫ້ບໍລິການ.',
   'SMTPSECURIES' => array(
     '' => 'ການເຊື່ອມຕໍ່ແບບປົກກະຕິ',
     'ssl' => 'ການເຊື່ອມຕໍ່ທີ່ປອດໄຟ (SSL)'
@@ -432,8 +399,7 @@ return array(
   'When enabled, Members registered with email must also verify their email address. It is not recommended to use in conjunction with other login methods.' => 'ເມື່ອເປີດໃຊ້ ສະມາຊິກທີ່ລົງທະບຽນກັບອີເມລ໌ຈະຕ້ອງຢືນຢັນທີ່ຢູ່ອີເມວຂອງເຂົາເຈົ້າ. ມັນບໍ່ໄດ້ຖືກແນະນໍາໃຫ້ໃຊ້ຮ່ວມກັບວິທີການເຂົ້າສູ່ລະບົບອື່ນໆ.',
   'Width' => 'ກວ້າງ',
   'With selected' => 'ເຮັດກັບທີ່ເລືອກ',
-  'YEAR_OFFSET' => 0,
-  'You can enter your LINE user ID below on your personal information page. to link your account to this official account' => 'ທ່ານສາມາດໃສ່ LINE user ID ຂອງທ່ານຂ້າງລຸ່ມນີ້ຢູ່ໃນຫນ້າຂໍ້ມູນສ່ວນຕົວຂອງທ່ານ. ເພື່ອເຊື່ອມຕໍ່ບັນຊີຂອງທ່ານກັບບັນຊີທາງການນີ້',
+'YEAR_OFFSET' => 0,
   'You can login at' => 'ທ່ານສາມາດເຂົ້າສູ່ລະບົບໄດ້ທີ່',
   'You can select multiple groups' => 'ເຈົ້າສາມາດເລືອກຫຼາຍພະແນກ',
   'You haven&#039;t verified your email address. Please check your email. and click the link in the email' => 'ທ່ານຍັງບໍ່ໄດ້ຢືນຢັນທີ່ຢູ່ອີເມວຂອງທ່ານ. ກະລຸນາກວດເບິ່ງອີເມວຂອງທ່ານ. ແລະຄລິກໃສ່ການເຊື່ອມຕໍ່ໃນອີເມລ໌',
@@ -444,5 +410,41 @@ return array(
   'Your new password is' => 'ລະຫັດຜ່ານໃໝ່ຂອງທ່ານຄື',
   'Your OTP code is :otp. Please enter this code on the website to confirm your phone number.' => 'ລະຫັດ OTP ຂອງທ່ານແມ່ນ :otp ກະລຸນາໃສ່ລະຫັດນີ້ຢູ່ໃນເວັບໄຊທ໌ເພື່ອຢືນຢັນເບີໂທລະສັບຂອງທ່ານ.',
   'Your registration information' => 'ຂໍ້ມູນການລົງທະບຽນຂອງທ່ານ',
-  'Zipcode' => 'ລະຫັດໄປສະນີ'
+  'Zipcode' => 'ລະຫັດໄປສະນີ',
+  'Add new' => 'ເພີ່ມໃໝ່',
+  'all' => 'ທັງໝົດ',
+  'Assignee' => 'ຜູ້ຮັບຜິດຊອບ',
+  'Can add' => 'ເພີ່ມວຽກໄດ້',
+  'Can delete' => 'ລຶບວຽກໄດ້',
+  'Can manage all' => 'ຈັດການວຽກທຸກຄົນໄດ້',
+  'Can view' => 'ເບິ່ງວຽກໄດ້',
+  'Can not be performed this request' => 'ບໍ່ສາມາດດໍາເນີນການໄດ້',
+  'day' => 'ມື້',
+  'Deadline' => 'ກໍານົດສົ່ງ',
+  'Enter the date and time the task must be completed' => 'ໃສ່ວັນທີແລະເວລາທີ່ຕ້ອງເຮັດວຽກໃຫ້ສໍາເລັດ',
+  'Example' => 'ຕົວຢ່າງ',
+  'Mark as done' => 'ຫມາຍວ່າສໍາເລັດ',
+  'Overdue task' => 'ວຽກເກີນກໍານົດ',
+  'Pending task' => 'ວຽກຄ້າງທີ່ຍັງບໍ່ສໍາເລັດ',
+  'Please enter a future date and time' => 'ກະລຸນາໃສ່ວັນທີແລະເວລາໃນອະນາຄົດ',
+  'Priority' => 'ຄວາມສໍາຄັນ',
+  'Remind again every number of days until the task is done' => 'ແຈ້ງເຕືອນຊ້ຳທຸກຈໍານວນມື້ ຈົນກວ່າວຽກຈະສໍາເລັດ',
+  'Remind before (days)' => 'ແຈ້ງເຕືອນລ່ວງໜ້າ (ມື້)',
+  'Reminder repeat' => 'ແຈ້ງເຕືອນຊ້ຳ',
+  'Secret key for calling the cron endpoint' => 'ລະຫັດລັບສໍາລັບເອີ້ນໃຊ້ cron',
+  'Start notifying when the task is due within this number of days' => 'ເລີ່ມແຈ້ງເຕືອນເມື່ອວຽກຍັງເຫຼືອກີ່ມື້ເຖິງກໍານົດ',
+  'Task' => 'ວຽກຄ້າງ',
+  'Task notification' => 'ແຈ້ງເຕືອນວຽກຄ້າງ',
+  'Task settings' => 'ຕັ້ງຄ່າວຽກຄ້າງ',
+  'TASK_PRIORITIES' => array(
+    'low' => 'ຕໍ່າ',
+    'medium' => 'ປານກາງ',
+    'high' => 'ສູງ'
+  ),
+  'TASK_STATUSES' => array(
+    'pending' => 'ລໍຖ້າດໍາເນີນການ',
+    'done' => 'ສໍາເລັດ',
+    'overdue' => 'ເກີນກໍານົດ'
+  ),
+  'Unassigned' => 'ຍັງບໍ່ກໍານົດຜູ້ຮັບຜິດຊອບ'
 );

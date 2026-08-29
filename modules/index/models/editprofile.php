@@ -117,11 +117,14 @@ class Model extends \Kotchasan\Model
                         }
                     }
                     if ($user) {
-                        if ($request->post('register_line_uid')->exists()) {
-                            $save['line_uid'] = $request->post('register_line_uid')->filter('Ua-z0-9');
-                        }
                         if ($request->post('register_telegram_id')->exists()) {
                             $save['telegram_id'] = $request->post('register_telegram_id')->number();
+                        }
+                        if ($request->post('register_telegram_chat_id')->exists()) {
+                            $save['telegram_chat_id'] = $request->post('register_telegram_chat_id')->filter('0-9\-');
+                            if ($save['telegram_chat_id'] == '') {
+                                $save['telegram_chat_id'] = null;
+                            }
                         }
                         $save['id_card'] = empty($save['id_card']) ? null : $save['id_card'];
                         $save['phone'] = empty($save['phone']) ? null : $save['phone'];

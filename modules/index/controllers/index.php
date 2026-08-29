@@ -82,12 +82,6 @@ class Controller extends \Gcms\Controller
         } else {
             $logo = '<span class="'.self::$cfg->default_icon.'">{WEBTITLE}</span>';
         }
-        // LINE Add friend
-        if ($login && !empty(self::$cfg->line_official_account) && !empty(self::$cfg->line_channel_access_token)) {
-            $line_add_friend = '<a href="https://line.me/R/ti/p/'.self::$cfg->line_official_account.'" class=icon-line target=_blank title="{LNG_Add friend}"></a>';
-        } else {
-            $line_add_friend = '';
-        }
         // เนื้อหา
         self::$view->setContents([
             // main template
@@ -107,8 +101,6 @@ class Controller extends \Gcms\Controller
             '/{TITLE}/' => $page->title(),
             // class สำหรับ body
             '/{BODYCLASS}/' => $page->bodyClass().' '.self::$cfg->theme_width,
-            // LINE Add friend
-            '/{LINE}/' => $line_add_friend,
             // เวอร์ชั่น
             '/{VERSION}/' => self::$cfg->version,
             // เลขเวอร์ชั่นของไฟล์

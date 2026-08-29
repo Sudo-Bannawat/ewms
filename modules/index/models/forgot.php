@@ -36,14 +36,9 @@ class Model extends \Kotchasan\KBase
         // ข้อมูลอีเมล
         $subject = '['.self::$cfg->web_title.'] '.Language::get('Get new password');
         $msg = $username.' '.Language::get('Your new password is').' : '.$password;
-        if (preg_match('/^[0-9]{10,10}$/', $username)) {
-            // send SMS
-            $err = \Gcms\Sms::send($username, $msg);
-        } else {
-            // send mail
-            $err = \Kotchasan\Email::send($username, self::$cfg->noreply_email, $subject, $msg);
-            $err = $err->error() ? $err->getErrorMessage() : '';
-        }
+        // send mail
+        $err = \Kotchasan\Email::send($username, self::$cfg->noreply_email, $subject, $msg);
+        $err = $err->error() ? $err->getErrorMessage() : '';
         if ($err != '') {
             // คืนค่า error
             return strip_tags($err);

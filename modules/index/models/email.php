@@ -13,7 +13,7 @@ namespace Index\Email;
 use Kotchasan\Language;
 
 /**
- * ส่งอีเมลและ LINE และ SMS ไปยังผู้ที่เกี่ยวข้อง
+ * ส่งอีเมลและ Telegram ไปยังผู้ที่เกี่ยวข้อง
  *
  * @author Goragod Wiriya <admin@goragod.com>
  *
@@ -36,8 +36,9 @@ class Model extends \Kotchasan\KBase
             $codes = explode(':', $save['activatecode']);
             // OTP
             $msg = Language::replace('Your OTP code is :otp. Please enter this code on the website to confirm your phone number.', [':otp' => $codes[0]]);
-            // send SMS
-            $err = \Gcms\Sms::send($save['username'], $msg);
+            // send Email
+            $err = \Kotchasan\Email::send($save['username'], self::$cfg->noreply_email, '['.self::$cfg->web_title.'] OTP', $msg);
+            $err = $err->error() ? $err->getErrorMessage() : '';
         } else {
             // send Email
             $msg = "{LNG_Your registration information}<br>\n<br>\n";
@@ -109,7 +110,7 @@ class Model extends \Kotchasan\KBase
         $subject = '['.self::$cfg->web_title.'] '.$title;
         // แอดมิน (สามารถอนุมัติสมาชิกได้)
         $query = \Kotchasan\Model::createQuery()
-            ->select('username', 'name', 'line_uid', 'telegram_id')
+            ->select('username', 'name', 'telegram_id')
             ->from('user')
             ->where([
                 ['id', $ids],
@@ -117,15 +118,8 @@ class Model extends \Kotchasan\KBase
                 ['active', 1]
             ]);
         foreach ($query->execute() as $item) {
-            if (preg_match('/^[0-9]{10,10}$/', $item->username)) {
-                // send SMS
-                \Gcms\Sms::send($item->username, $msg);
-            } else {
-                // send Email
-                \Kotchasan\Email::send($item->name.'<'.$item->username.'>', self::$cfg->noreply_email, $subject, $msg);
-            }
-            // ส่งข้อความไปยัง Line
-            \Gcms\Line::sendTo($item->line_uid, $msg);
+            // send Email
+            \Kotchasan\Email::send($item->name.'<'.$item->username.'>', self::$cfg->noreply_email, $subject, $msg);
             // ส่งข้อความไปยัง Telegram Bot
             \Gcms\Telegram::sendTo($item->telegram_id, $msg);
         }
